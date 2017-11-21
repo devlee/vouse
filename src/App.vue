@@ -1,10 +1,11 @@
 <template>
   <div id="app">
-    <header>
-      <span>Vue.js PWA</span>
+    <header class="header">
+      <span class="projectName">vouse</span>
+      <router-link to="home" class="link">Home</router-link>
+      <router-link to="about" class="link">About</router-link>
     </header>
     <main>
-      <img src="./assets/logo.png" alt="Vue.js PWA">
       <router-view></router-view>
     </main>
   </div>
@@ -25,30 +26,34 @@ body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: #222;
 }
 
-main {
-  text-align: center;
-  margin-top: 40px;
+.header {
+  height: 50px;
+  background-color: #0078d7;
+  color: #fff;
 }
 
-header {
-  margin: 0;
-  height: 56px;
-  padding: 0 16px 0 24px;
-  background-color: #35495E;
-  color: #ffffff;
-}
-
-header span {
-  display: block;
-  position: relative;
-  font-size: 20px;
-  line-height: 1;
-  letter-spacing: .02em;
-  font-weight: 400;
+.projectName {
+  font-size: 24px;
+  padding: 7px 17px;
+  display: inline-block;
+  height: 48px;
+  margin: 1px;
   box-sizing: border-box;
-  padding-top: 16px;
+  vertical-align: top;
+}
+
+.link {
+  color: #fff;
+  padding: 0 26px;
+  font-size: 15px;
+  display: inline-block;
+  height: 48px;
+  margin: 1px;
+  box-sizing: border-box;
+  vertical-align: top;
+  line-height: 48px;
 }
 </style>
