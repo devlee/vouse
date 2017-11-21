@@ -25,6 +25,7 @@ export default {
   },
   created () {
     bus.$on('editcomp', data => {
+      this.props = []
       this.idx = data.idx
       this.comp = data.comp
       if (data.comp.props) {
