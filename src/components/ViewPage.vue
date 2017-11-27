@@ -22,16 +22,19 @@ export default {
     return {
       target: '',
       list: [],
-      currentActiveIndex: -1
+      currentActiveIndex: -1,
+      cIndex: -1
     }
   },
   methods: {
     drop (e) {
       import(`./${this.target}.vue`)
         .then(comp => {
-          this.$options.components[this.target] = comp.default
+          this.cIndex++
+          const name = `${this.target}${this.cIndex}`
+          this.$options.components[name] = comp.default
           this.list.push({
-            name: this.target,
+            name,
             data: {}
           })
         })
@@ -43,8 +46,9 @@ export default {
     clickCompWrapper (idx) {
       this.currentActiveIndex = idx
       bus.$emit('editcomp', {
-        idx: idx,
-        comp: this.$options.components[this.list[idx].name]
+        idx,
+        comp: this.$options.components[this.list[idx].name],
+        data: this.list[idx].data
       })
     }
   },
@@ -53,12 +57,15 @@ export default {
       this.target = target
     })
     bus.$on('update', data => {
+      console.log(data)
       this.list = [].concat(this.list.map((item, idx) => {
+        console.log(item)
         if (idx === data.idx) {
           item.data = data.data
         }
         return item
       }))
+      console.log(this.list)
     })
   }
 }

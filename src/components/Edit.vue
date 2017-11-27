@@ -31,16 +31,17 @@ export default {
       if (data.comp.props) {
         Object.keys(data.comp.props).map(item => {
           this.props.push(item)
-          this.data[item] = ''
+          this.data[item] = data.data[item] || ''
         })
       }
     })
   },
   methods: {
     change () {
+      console.log(this.idx)
       bus.$emit('update', {
-        idx: this.idx,
-        data: this.data
+        idx: JSON.parse(JSON.stringify(this.idx)),
+        data: JSON.parse(JSON.stringify(this.data))
       })
     }
   }
