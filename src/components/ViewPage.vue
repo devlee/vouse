@@ -136,7 +136,6 @@ export default {
       if (this.isPressed) {
         const mouseY = pageY - this.disY
         const currentRow = clamp(Math.round(mouseY / 120), 0, count - 1)
-        console.log(currentRow, this.lastPressedIdx)
         if (currentRow !== getIndex(this.list, this.lastPressedIdx)) {
           const newRange = reinsert(range, getIndex(this.list, this.lastPressedIdx), currentRow)
           this.mouseY = mouseY
